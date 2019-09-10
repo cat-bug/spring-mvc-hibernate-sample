@@ -1,0 +1,12 @@
+CREATE DATABASE  IF NOT EXISTS `zoo`;
+USE `zoo`;
+
+DROP TABLE IF EXISTS `animal`;
+
+CREATE TABLE `animal` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `kind` varchar(100) DEFAULT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `age` int(10) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
