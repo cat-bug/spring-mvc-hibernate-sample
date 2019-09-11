@@ -13,15 +13,11 @@ public abstract class AbstractDao<T> {
         this.sessionFactory = sessionFactory;
     }
     public void persist(T t){
-        sessionFactory.getCurrentSession().persist(t);
+        sessionFactory.getCurrentSession().saveOrUpdate(t);
     }
 
     public void delete(T t){
         sessionFactory.getCurrentSession().delete(t);
-    }
-
-    public void merge(T t){
-        sessionFactory.getCurrentSession().merge(t);
     }
 
     public Session getSession(){

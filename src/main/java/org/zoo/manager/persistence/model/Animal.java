@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,4 +26,17 @@ public class Animal {
 
     @Column(name = "age")
     private Integer age;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "animal_disease",
+            joinColumns = @JoinColumn(name = "animal_id"),
+            inverseJoinColumns = @JoinColumn(name = "disease_id"))
+    private List<Disease> diseases;
+
+    public void addDisease(Disease disease) {
+        if (diseases == null) {
+            diseases = new ArrayList<Disease>();
+        }
+        this.diseases.add(disease);
+    }
 }

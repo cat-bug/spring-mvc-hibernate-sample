@@ -20,6 +20,7 @@ public class AnimalDaoImpl extends AbstractDao<Animal> implements AnimalDao {
         CriteriaBuilder cb = getSession().getCriteriaBuilder();
         CriteriaQuery cr = cb.createQuery(Animal.class);
         Root<Animal> root = cr.from(Animal.class);
+        cr.orderBy(cb.asc(root.get("name")));
         cr.select(root);
 
         Query<Animal> query = getSession().createQuery(cr);
@@ -28,5 +29,26 @@ public class AnimalDaoImpl extends AbstractDao<Animal> implements AnimalDao {
 
     public void saveAnimal(Animal animal) {
         persist(animal);
+    }
+
+    public Animal getAnimal(Integer id) {
+//        CriteriaBuilder cb = getSession().getCriteriaBuilder();
+//        CriteriaQuery cr = cb.createQuery(Animal.class);
+//        Root<Animal> root = cr.from(Animal.class);
+//        cr.where(cb.equal(root.get("id"), id));
+//        cr.select(root);
+//
+//        Query<Animal> query = getSession().createQuery(cr);
+//        return query.getSingleResult();
+
+        return getSession().get(Animal.class, id);
+    }
+
+    public void updateAnimal(Animal animal) {
+        persist(animal);
+    }
+
+    public void deleteAnimal(Animal animal) {
+        delete(animal);
     }
 }

@@ -8,13 +8,14 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2>Add new animal</h2>
+        <h2>Update an animal</h2>
     </div>
 </div>
 <div id="container">
     <h3>Add new animal</h3>
     <div id="content">
-        <form:form action="saveAnimal" modelAttribute="newAnimal" method="post">
+        <form:form action="updateAnimal" modelAttribute="animal" method="post">
+            <form:hidden path="id"/>
             <table>
                 <tbody>
                 <tr>
@@ -31,23 +32,9 @@
                     <td><label>Age</label></td>
                     <td><form:input path="age"/></td>
                 </tr>
-
-                <tr>
-                    <td><label>Diseases</label></td>
-                    <td>
-                        <form:form modelAttribute="diseases">
-                            <c:forEach var="disease" items="${diseases}">
-                                <%--<form:input path="diseases[${diseaseLoop.index}].name" value="disease.name"/>--%>
-                                <div>${disease.name}</div>
-                            </c:forEach>
-                        </form:form>
-
-                    </td>
-
-                </tr>
                 <tr>
                     <td><label></label></td>
-                    <td><input type="submit" value="Add" class="save"/></td>
+                    <td><input type="submit" value="Update" class="save"/></td>
                 </tr>
                 </tbody>
             </table>
