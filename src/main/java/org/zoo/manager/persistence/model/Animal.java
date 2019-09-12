@@ -27,6 +27,17 @@ public class Animal {
     @Column(name = "age")
     private Integer age;
 
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", kind='" + kind + '\'' +
+                ", age=" + age +
+                ", diseases=" + diseases +
+                '}';
+    }
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "animal_disease",
             joinColumns = @JoinColumn(name = "animal_id"),
